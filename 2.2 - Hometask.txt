@@ -1,0 +1,80 @@
+1 - Calculating with Functions
+
+This time we want to write calculations using functions and get the results.
+Requirements:
+
+There must be a function for each number from 0 ("zero") to 9 ("nine")
+There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy (divided_by in Ruby and Python)
+Each calculation consist of exactly one operation and two numbers
+The most outer function represents the left operand, the most inner function represents the right operand
+Division should be integer division. For example, this should return 2, not 2.666666...:
+
+
+//solution//
+
+
+function zero(func)   { return func ? func(0) : 0; };
+function one(func)    { return func ? func(1) : 1; };
+function two(func)    { return func ? func(2) : 2; };
+function three(func)  { return func ? func(3) : 3; };
+function four(func)   { return func ? func(4) : 4; };
+function five(func)   { return func ? func(5) : 5; };
+function six(func)    { return func ? func(6) : 6; };
+function seven(func)  { return func ? func(7) : 7; };
+function eight(func)  { return func ? func(8) : 8; };
+function nine(func)   { return func ? func(9) : 9; };
+
+function plus( b )      { return function( a ) { return a + b; }; };
+function minus( b )     { return function( a ) { return a - b; }; };
+function times( b )     { return function( a ) { return a * b; }; };
+function dividedBy( b ) { return function( a ) { return Math.floor(a / b); }; };
+
+
+2 - Get the Middle Character
+
+You are going to be given a word. Your job is to return the middle character of the word. 
+If the word's length is odd, return the middle character. If the word's length is even, return the
+ middle 2 characters.
+
+//solution//
+
+function getMiddle(s)
+{
+ 
+  var res="";
+  var n = s.length;
+  if(n%2==0)
+    {
+      res = res +  s[n/2 -1] + s[n/2 ];
+    }
+  else
+    res = res + s[(n-1)/2];
+  return res;
+}
+
+
+3 - Partition On
+
+Write a function which partitions a list of items based on a given predicate.
+
+After the partition function is run, the list should be of the form [ F, F, F, T, T, T ] where the Fs (resp. Ts) are items for which the predicate function returned false (resp. true).
+
+NOTE: the partitioning should be stable; in other words: the ordering of the Fs (resp. Ts) should be preserved relative to each other.
+
+For convenience and utility, the partition function should return the boundary index. In other words: the index of the first T value in items.
+
+//solution//
+
+function partitionOn(pred, items) { 
+   var result = 0;
+   for(var item in items)
+   { 
+      if(!pred(items[item])) 
+      { 
+         items.splice((result++), 0, items.splice(item, 1)[0]); 
+      } 
+   } 
+   return result; 
+}
+
+

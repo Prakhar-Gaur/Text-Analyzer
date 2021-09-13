@@ -1,0 +1,64 @@
+
+2 - A function within a function
+
+Given an input n, write a function always that returns a function which returns n. Ruby should return a lambda or a proc.
+
+//solution//
+
+function always (n) {
+return ()=>n;
+}
+
+
+
+3 - Closures and Scopes
+
+We want to create a function, which returns an array of functions, which return their index in the array. 
+For better understanding, here an example:
+
+We already implemented that function, but when we actually run the code, the result doesn't look like what we expected.
+ Can you spot, what's wrong with it? A test fixture is also available
+
+
+//solution//
+
+
+function createFunctions(n) {
+  var callbacks = [];
+
+  for (var i=0; i<n; i++) {
+    const temp = i;
+    callbacks.push(function() {
+      return temp;
+    });
+  }
+  
+  return callbacks;
+}
+
+
+4 - Can you keep a secret?
+
+There's no such thing as private properties on a coffeescript object! But, maybe there are?
+
+Implement a function createSecretHolder(secret) which accepts any value as secret and returns an object with ONLY two methods
+
+getSecret() which returns the secret
+setSecret() which sets the secret
+
+//solution//
+
+
+function createSecretHolder(secret)
+{ 
+  return { 
+    getSecret: function() 
+    { 
+      return secret;
+    }, 
+    setSecret: function(s)
+    {
+      secret = s; 
+    } 
+  }; 
+}
